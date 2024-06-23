@@ -7,7 +7,7 @@ cd "$location"
 apt update -y
 apt install wget curl -y
 
-curl -s "https://github.com/path-tw/artefacts/releases/download/v0.1.1/devsetup-v0.1.1-linux-$arch" -o devsetup
+curl -Ls "https://github.com/path-tw/artefacts/releases/download/v0.1.1/devsetup-v0.1.1-linux-$arch" -o devsetup
 
 chmod +x devsetup
 ./devsetup setup
