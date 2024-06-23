@@ -1,4 +1,4 @@
-location="~/path/tools"
+location=~/path/tools
 arch=$(dpkg --print-architecture)
 
 mkdir -p "$location"
