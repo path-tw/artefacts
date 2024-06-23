@@ -1,5 +1,5 @@
 location="~/path/tools"
-$arch = $(dpkg --print-architecture)
+$arch=$(dpkg --print-architecture)
 
 mkdir -p "$location"
 cd "$location"
