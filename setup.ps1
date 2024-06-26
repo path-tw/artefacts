@@ -10,4 +10,4 @@ cd "$location"
 
 Invoke-WebRequest "https://github.com/path-tw/artefacts/releases/download/v0.1.2/devsetup-v0.1.2-windows-$arch.exe" -OutFile argus.exe
 
-Start-Process ".\argus.exe" -ArgumentList "setup" -Verb RunAs -Wait
+Start-Process ".\argus.exe" -ArgumentList "setup" -Wait
