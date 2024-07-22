@@ -7,7 +7,7 @@ cd "$location"
 apt update -y
 apt install wget curl -y
 
-curl -Ls "https://github.com/path-tw/artefacts/releases/download/v0.1.6-TEST/devsetup-v0.1.6-TEST-linux-$arch" -o argus
+curl -Ls "https://github.com/path-tw/artefacts/releases/download/v0.1.6/devsetup-v0.1.6-linux-$arch" -o argus
 
 chmod +x argus
 ./argus setup
