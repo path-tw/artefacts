@@ -21,6 +21,7 @@ function replaceVersion {
   file_name=$3
 
   sed -i "s/${previous_version}/${current_version}/g" "${file_name}"
+  cat ${file_name}
 }
 
 function main {
