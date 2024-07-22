@@ -24,8 +24,15 @@ function replaceVersion {
 }
 
 function main {
+  action=${GITHUB_ACTION}
   current_version=${TAG}
   previous_version=$(fetchPreviousReleaseVersion)
+
+  if [ "${action}" == "deleted" ]; then
+    current_version=${fetchPreviousReleaseVersion}
+    previous_version=$(TAG)
+  fi
+
   replaceVersion $previous_version $current_version setup.sh
   replaceVersion $previous_version $current_version setup.ps1
 
@@ -33,7 +40,7 @@ function main {
   git config --global user.email "gh-actions@github.com"
 
   git add .
-  git commit -m "Updating version to $currect_version"
+  git commit -m "Updating version to ${currect_version}"
   git push origin main
 }
 

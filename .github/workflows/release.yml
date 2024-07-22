@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: update latest version in setup scripts
         env:
+          GITHUB_ACTION: ${{ github.event.action }}
           TAG: ${{ github.event.release.tag_name }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
