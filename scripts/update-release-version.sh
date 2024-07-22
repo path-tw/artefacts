@@ -3,14 +3,15 @@ set -e -o pipefail
 gh_token=${GITHUB_TOKEN}
 repository=${GITHUB_REPOSITORY}
 
-function fetchPreviousReleaseVersion {
+function fetchReleaseVersion {
+  index=$1
   # Fetch the list of releases using GitHub API
   releases=$(curl -s -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${gh_token}" \
             https://api.github.com/repos/${repository}/releases)
 
   # Extract the previous release version (second latest)
-  previous_version=$(echo "$releases" | jq -r '.[1].tag_name')
+  previous_version=$(echo "$releases" | jq -r ".[${index}].tag_name")
 
   echo "$previous_version"
 }
@@ -27,10 +28,10 @@ function replaceVersion {
 function main {
   action=${GITHUB_ACTION}
   current_version=${TAG}
-  previous_version=$(fetchPreviousReleaseVersion)
+  previous_version=$(fetchReleaseVersion 1)
 
   if [ "${action}" = "deleted" ]; then
-    current_version=${fetchPreviousReleaseVersion}
+    current_version=${fetchReleaseVersion 0}
     previous_version=$(TAG)
   fi
 
