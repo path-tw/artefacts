@@ -28,10 +28,13 @@ function main {
   current_version=${TAG}
   previous_version=$(fetchPreviousReleaseVersion)
 
-  if [ "${action}" == "deleted" ]; then
+  if [ "${action}" = "deleted" ]; then
     current_version=${fetchPreviousReleaseVersion}
     previous_version=$(TAG)
   fi
+
+  echo "The current release version is ${current_version}"
+  echo "The previous release version is ${previous_version}"
 
   replaceVersion $previous_version $current_version setup.sh
   replaceVersion $previous_version $current_version setup.ps1
