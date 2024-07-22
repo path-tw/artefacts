@@ -29,6 +29,7 @@ function main {
   action=${GITHUB_ACTION}
   current_version=${TAG}
   previous_version=$(fetchReleaseVersion 1)
+  echo $action
 
   if [ "${action}" = "deleted" ]; then
     current_version=${fetchReleaseVersion 0}
