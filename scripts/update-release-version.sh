@@ -34,7 +34,7 @@ function main {
 
   git add .
   git commit -m "Updating version to $currect_version"
-  git push
+  git push origin main
 }
 
 main
