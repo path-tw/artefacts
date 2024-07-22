@@ -45,7 +45,7 @@ function main {
   git config --global user.email "gh-actions@github.com"
 
   git add .
-  git commit -m "Updating version to ${currect_version}"
+  git commit -m "Updating version to latest"
   git push origin main
 }
 
